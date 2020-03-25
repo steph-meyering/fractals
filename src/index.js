@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let ymid = HEIGHT / 2;
     let yend = 0;
     
-    const bt = new BFSTree(c, [xmid,ystart], 8, 10)
+    const bt = new BFSTree(c, [xmid,ystart], 13, 20)
     console.log(bt)
 
     // const t = new RecTree(c)
