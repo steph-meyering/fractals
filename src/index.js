@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     let branchAngleSlider = document.getElementById("branch-angle-input");
     let depthSlider = document.getElementById("depth-input");
-    let button = document.getElementById("calculate");
     
 
     const displayUserInput =() => {
@@ -21,13 +20,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     branchAngleSlider.oninput = () => displayUserInput();
     depthSlider.oninput = () => displayUserInput()
-    button.onclick = () => calculate();
+    branchAngleSlider.onchange = () => calculate();
+    depthSlider.onchange = () => calculate()
+
+    let startX = WIDTH/2;
+    let startY = HEIGHT;
+    canvasEl.addEventListener("click", e => {
+        startX = e.clientX;
+        startY = e.clientY + 100;
+        calculate()
+    })
     
-    const calculate = () => {
+    const calculate = (x=startX, y=startY) => {
         c.clearRect(0, 0, WIDTH, HEIGHT)
         let angle = branchAngleSlider.valueAsNumber
         let depth = depthSlider.valueAsNumber
-        new BFSTree(c, [xmid, ystart], depth, angle);
+        new BFSTree(c, [x, y], depth, angle);
     }
     const c = canvasEl.getContext("2d")
     
