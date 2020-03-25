@@ -86,18 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/asteroid.js":
-/*!*************************!*\
-  !*** ./src/asteroid.js ***!
-  \*************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _moving_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\n\nclass Asteroid extends _moving_object__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n    constructor(props){\n        super(props);\n        this.color = \"red\";\n        this.radius = 30;\n        this.pos = props.pos;\n        this.vel = this.randomVec(10)\n    }\n    // Return a randomly oriented vector with the given length.\n    \n    randomVec(length) {\n        const deg = 2 * Math.PI * Math.random();\n        return this.scale([Math.sin(deg), Math.cos(deg)], length);\n    }\n\n    // Scale the length of a vector by the given amount.\n    scale(vec, m) {\n        return [vec[0] * m, vec[1] * m];\n    };\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Asteroid);\n\n//# sourceURL=webpack:///./src/asteroid.js?");
-
-/***/ }),
-
 /***/ "./src/bfs_tree.js":
 /*!*************************!*\
   !*** ./src/bfs_tree.js ***!
@@ -110,30 +98,6 @@ eval("__webpack_require__.r(__webpack_exports__);\nclass BFSTree {\n    construc
 
 /***/ }),
 
-/***/ "./src/game.js":
-/*!*********************!*\
-  !*** ./src/game.js ***!
-  \*********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index */ \"./src/index.js\");\n/* harmony import */ var _asteroid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\n\n\n\nclass Game {\n    constructor(n){\n        this.asteroids = [];\n        this.addAsteroids(n)   \n    }\n    \n    addAsteroids(n){\n        for (let i = 0; i < n; i++) {\n            const pos = this.randomPosition();\n            const asteroid = new _asteroid__WEBPACK_IMPORTED_MODULE_1__[\"default\"]({pos});\n            this.asteroids.push(asteroid);\n        }\n    }\n    \n    draw(ctx){\n        ctx.clearRect(0, 0, _index__WEBPACK_IMPORTED_MODULE_0__[\"WIDTH\"], _index__WEBPACK_IMPORTED_MODULE_0__[\"HEIGHT\"])\n        this.asteroids.forEach(a => a.draw(ctx))\n    }\n\n    moveObjects(){\n        this.asteroids.forEach(a => a.move())\n    }\n    // add(object){\n    //     if (object instanceof Asteroid){\n    //         this.asteroids.push(object)\n    //     } else {\n    //         throw new Error(\"unknow object type\")\n    //     }\n    // }\n\n    \n    \n    randomPosition() {\n        return [\n            Math.floor(_index__WEBPACK_IMPORTED_MODULE_0__[\"HEIGHT\"] * Math.random()),\n            Math.floor(_index__WEBPACK_IMPORTED_MODULE_0__[\"WIDTH\"] * Math.random())\n        ];\n    };\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Game);\n\n//# sourceURL=webpack:///./src/game.js?");
-
-/***/ }),
-
-/***/ "./src/game_view.js":
-/*!**************************!*\
-  !*** ./src/game_view.js ***!
-  \**************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nclass GameView {\n    constructor(game, ctx){\n        this.game = game;\n        this.ctx = ctx;\n    }\n\n    start(){\n        setInterval(() => {\n            this.game.moveObjects();\n            this.game.draw(this.ctx)\n        },20)\n    }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GameView);\n\n//# sourceURL=webpack:///./src/game_view.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -142,19 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nclass GameView {\n    constru
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HEIGHT\", function() { return HEIGHT; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"WIDTH\", function() { return WIDTH; });\n/* harmony import */ var _moving_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n/* harmony import */ var _asteroid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\n/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game */ \"./src/game.js\");\n/* harmony import */ var _game_view__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./game_view */ \"./src/game_view.js\");\n/* harmony import */ var _rec_tree__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./rec_tree */ \"./src/rec_tree.js\");\n/* harmony import */ var _bfs_tree__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./bfs_tree */ \"./src/bfs_tree.js\");\n\n\n\n\n\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const canvasEl = document.getElementById(\"main-canvas\")\n    canvasEl.height = window.innerHeight;\n    canvasEl.width = window.innerWidth;\n\n    const c = canvasEl.getContext(\"2d\")\n    \n    let xstart = 0\n    let xmid = WIDTH / 2;\n    let xend = WIDTH;\n\n    let ystart = HEIGHT;\n    let ymid = HEIGHT / 2;\n    let yend = 0;\n    \n    const bt = new _bfs_tree__WEBPACK_IMPORTED_MODULE_5__[\"default\"](c, [xmid,ystart], 13, 20)\n    console.log(bt)\n\n    // const t = new RecTree(c)\n    // t.drawTree(xmid, ystart, -90, 5, 20)\n    \n    // const g = new Game(23)\n    // const gv = new GameView(g,c)\n    // gv.start()\n\n    // c.moveTo(xmid, ystart);\n    // c.lineTo(xmid, ymid);\n    // c.stroke()\n})\n\nconst HEIGHT = window.innerHeight;\nconst WIDTH = window.innerWidth ;\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/moving_object.js":
-/*!******************************!*\
-  !*** ./src/moving_object.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nclass MovingObject{\n    constructor(options){\n        this.pos = options.pos;\n        this.vel = options.vel;\n        this.radius = options.radius;\n        this.color = options.color;\n    }\n\n    draw(ctx) {\n        ctx.fillStyle = this.color;\n        ctx.beginPath();\n        ctx.arc(\n            this.pos[0],\n            this.pos[1],\n            this.radius,\n            0,\n            2 * Math.PI,\n            false\n        );\n        ctx.fill();\n    }\n\n    move(){\n        this.pos[0] += this.vel[0];\n        this.pos[1] += this.vel[1]\n    }\n}\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (MovingObject);\n\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HEIGHT\", function() { return HEIGHT; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"WIDTH\", function() { return WIDTH; });\n/* harmony import */ var _rec_tree__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rec_tree */ \"./src/rec_tree.js\");\n/* harmony import */ var _bfs_tree__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bfs_tree */ \"./src/bfs_tree.js\");\n\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const canvasEl = document.getElementById(\"main-canvas\")\n    canvasEl.height = window.innerHeight;\n    canvasEl.width = window.innerWidth;\n    \n    \n    let branchAngleSlider = document.getElementById(\"branch-angle-input\");\n    let depthSlider = document.getElementById(\"depth-input\");\n    let button = document.getElementById(\"calculate\");\n    \n\n    const displayUserInput =() => {\n        let angle = branchAngleSlider.value;\n        let depth = depthSlider.value\n        let output = document.getElementById('tree-params');\n        output.innerHTML = `depth: ${depth} angle: ${angle}`\n    }\n\n    branchAngleSlider.oninput = () => displayUserInput();\n    depthSlider.oninput = () => displayUserInput()\n    button.onclick = () => calculate();\n    \n    const calculate = () => {\n        c.clearRect(0, 0, WIDTH, HEIGHT)\n        let angle = branchAngleSlider.valueAsNumber\n        let depth = depthSlider.valueAsNumber\n        new _bfs_tree__WEBPACK_IMPORTED_MODULE_1__[\"default\"](c, [xmid, ystart], depth, angle);\n    }\n    const c = canvasEl.getContext(\"2d\")\n    \n    let xstart = 0\n    let xmid = WIDTH / 2;\n    let xend = WIDTH;\n\n    let ystart = HEIGHT;\n    let ymid = HEIGHT / 2;\n    let yend = 0;\n    \n    // const bt = new BFSTree(c, [xmid,ystart], 13, 20)\n\n\n\n\n    // const t = new RecTree(c)\n    // t.drawTree(xmid, ystart, -90, 5, 20)\n    \n    // const g = new Game(23)\n    // const gv = new GameView(g,c)\n    // gv.start()\n\n    // c.moveTo(xmid, ystart);\n    // c.lineTo(xmid, ymid);\n    // c.stroke()\n})\n\nconst HEIGHT = window.innerHeight;\nconst WIDTH = window.innerWidth ;\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
