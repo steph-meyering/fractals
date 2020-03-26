@@ -18,10 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
         output.innerHTML = `depth: ${depth} angle: ${angle}`
     }
 
-    branchAngleSlider.oninput = () => displayUserInput();
-    depthSlider.oninput = () => displayUserInput()
-    branchAngleSlider.onchange = () => calculate();
-    depthSlider.onchange = () => calculate()
+    branchAngleSlider.oninput = () => {
+        displayUserInput();
+        calculate();
+    }
+    depthSlider.oninput = () => {
+        displayUserInput();
+        calculate();
+    } 
 
     let startX = WIDTH/2;
     let startY = HEIGHT;
@@ -39,29 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const c = canvasEl.getContext("2d")
     
-    let xstart = 0
-    let xmid = WIDTH / 2;
-    let xend = WIDTH;
-
-    let ystart = HEIGHT;
-    let ymid = HEIGHT / 2;
-    let yend = 0;
-    
-    // const bt = new BFSTree(c, [xmid,ystart], 13, 20)
-
-
-
-
-    // const t = new RecTree(c)
-    // t.drawTree(xmid, ystart, -90, 5, 20)
-    
-    // const g = new Game(23)
-    // const gv = new GameView(g,c)
-    // gv.start()
-
-    // c.moveTo(xmid, ystart);
-    // c.lineTo(xmid, ymid);
-    // c.stroke()
 })
 
 export const HEIGHT = window.innerHeight;
