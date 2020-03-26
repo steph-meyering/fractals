@@ -1,22 +1,24 @@
 import RecTree from "./rec_tree";
 import BFSTree from "./bfs_tree";
+import BFSInput from "./bfs_controls";
 
 document.addEventListener("DOMContentLoaded", function () {
     const canvasEl = document.getElementById("main-canvas")
     canvasEl.height = window.innerHeight;
     canvasEl.width = window.innerWidth;
     
-    
-    let branchAngleSlider = document.getElementById("branch-angle-input");
-    let depthSlider = document.getElementById("depth-input");
-    
+    let configDiv = document.getElementById('tree-config');
 
-    const displayUserInput =() => {
-        let angle = branchAngleSlider.value;
-        let depth = depthSlider.value
-        let output = document.getElementById('tree-params');
-        output.innerHTML = `depth: ${depth} angle: ${angle}`
-    }
+    // let output = document.getElementById('tree-params');
+    
+    // let branchAngleSlider = document.getElementById("branch-angle-input");
+    // let depthSlider = document.getElementById("depth-input");
+    
+    // const displayUserInput =() => {
+    //     let angle = branchAngleSlider.value;
+    //     let depth = depthSlider.value
+    //     output.innerHTML = `depth: ${depth} angle: ${angle}`
+    // }
 
     branchAngleSlider.oninput = () => {
         displayUserInput();
