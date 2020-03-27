@@ -9,11 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="tree-config">
-        <input type="range" placeholder="12" min="1" max="15" value="9" id="depth-input"> depth
-        <input type="range" placeholder="12" min="1" max="200" value="20" id="branch-angle-input"> branch angle
+    <button id="toggle">Switch to Mandelbrot</button>
+    <div id="tree-config" class="revealed">
+        <input type="range" min="1" max="15" value="9" id="depth-input"> depth
+        <input type="range" min="1" max="200" value="20" id="branch-angle-input"> branch angle
         <p id='tree-params'></p>
     </div>
-    <canvas style="background-color:powderblue" id="main-canvas">Your browser doesn't support this content</canvas>
+    <canvas style="background-color:white" id="main-canvas">Your browser doesn't support this content</canvas>
 </body>
 </html>

@@ -1,11 +1,10 @@
 import BFSTree from "./bfs_tree";
-import { WIDTH, HEIGHT } from ".";
 
 class BFSInput{
     constructor(ctx, configDiv){
         // save context and get input slider elements + output div
         this.ctx = ctx;
-        this.startPos = [WIDTH/2, HEIGHT]
+        this.startPos = [innerWidth/2, innerHeight - 100]
         this.branchAngleSlider = configDiv.querySelector("#branch-angle-input");
         this.depthSlider = configDiv.querySelector("#depth-input");
         this.output = configDiv.querySelector('#tree-params');
@@ -16,7 +15,7 @@ class BFSInput{
     }
 
     displayUserInput(depth, angle) {
-        this.output.innerHTML = `depth: ${depth} angle: ${angle} nodes generated on each render: ${2** depth}`
+        this.output.innerHTML = `depth: ${depth} angle: ${angle} start position coordinates: ${this.startPos}`
     }
 
     update(){
@@ -28,9 +27,8 @@ class BFSInput{
         
     }
 
-    
     calculate (depth, angle) {
-        this.ctx.clearRect(0 ,0 , WIDTH, HEIGHT)
+        this.ctx.clearRect(0 ,0 , innerWidth, innerHeight)
         new BFSTree(this.ctx, this.startPos, depth, angle)
     }
 }

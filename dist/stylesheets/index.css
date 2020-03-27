@@ -3,3 +3,15 @@
     position: absolute;
     height: 50px;
 }
+
+.hidden {
+    display: none;
+}
+
+.revealed {
+    display: block;
+}
+
+body {
+    padding-top: 20px;
+}
