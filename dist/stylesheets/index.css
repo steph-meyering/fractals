@@ -17,5 +17,6 @@ body {
 }
 
 #selection-rectangle {
-    border: 1px dotted white;e
+    border: 1px dotted white;
+    position: absolute;
 }

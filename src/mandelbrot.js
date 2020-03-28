@@ -55,14 +55,7 @@ class Mandelbrot {
         }
     }
 
-    getCoordinates(){
-        const canvasEl = document.getElementById("main-canvas");
-        canvasEl.addEventListener('')
-    }
 
-    convertCoordinates(x, y){
-        
-    }
 }
 
 export default Mandelbrot;
