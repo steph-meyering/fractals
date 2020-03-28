@@ -19,4 +19,6 @@ body {
 #selection-rectangle {
     border: 1px dotted white;
     position: absolute;
+    /* background-color: rgb(100, 0, 0, 0.4); */
+    z-index: 100;
 }
