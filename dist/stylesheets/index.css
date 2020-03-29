@@ -16,9 +16,11 @@ body {
     padding-top: 20px;
 }
 
-#selection-rectangle {
-    border: 1px dotted white;
+#progress-bar {
     position: absolute;
-    /* background-color: rgb(100, 0, 0, 0.4); */
-    z-index: 100;
+    bottom: 0;
+    background-color: salmon;
+}
+#selection-rectangle {
+    position: absolute;
 }

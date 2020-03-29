@@ -1,33 +1,48 @@
+import ProgressBar from "./mandelbrot_progress";
+
 class Mandelbrot {
     constructor(ctx){
         this.ctx = ctx;
-        this.depth = 100;
+        this.progressBar = new ProgressBar;
+        this.depth = 1000;
+        this.imin = -2;
+        this.imax = 0.5;
+        this.jmin = -1;
+        this.jmax = 1;
+        this.iterateOverAll();
+
     }
 
-    iterateOverAll(cx, cy, zoom){
-        let count100 = 0;
-        let count50 = 0;
-        let count200 = 0;
-        for (let x = innerWidth - 1; x >= 0; x--) {
+    update(x0, y0, x1, y1){
+        let xmin = Math.min(x0, x1);
+        let ymin = Math.max(y0, y1);
+        let xmax = Math.max(x0, x1);
+        let ymax = Math.min(y0, y1);
+        let di = this.imax - this.imin;
+        let dj = this.jmax - this.jmin;
+        let min_dim = Math.min(innerWidth, innerHeight);
+        let step = Math.min(di, dj) / min_dim;
+        this.imax = this.imin + xmax * step;
+        this.jmax = this.jmin + (innerHeight - ymax) * step;
+        this.imin = this.imin + xmin * step;
+        this.jmin = this.jmin + (innerHeight - ymin) * step;
+        this.iterateOverAll()
+    }
+    
+    iterateOverAll(){
+        let di = this.imax - this.imin;
+        let dj = this.jmax - this.jmin;
+        let min_dim = Math.min(innerWidth, innerHeight);
+        let step = Math.min(di, dj) / min_dim;
+        for (let x = 0; x < innerWidth; x++) {
             for (let y = 0; y < innerHeight; y++) {
-                const color = this.calcDepth(x/zoom + cx , y/zoom + cy);
-                switch (true) {
-                    case (color<50):
-                        count50++;
-                        break;
-                    case (50 <= color < 100):
-                        count100++;
-                        break;
-                    case (color >= 100):
-                        count200++;
-                        break;
-                    default:
-                        break;
-                }
+                let cx = this.imin + x * step;
+                let cy = this.jmin + (innerHeight - y) * step 
+                const color = this.calcDepth(cx, cy);
                 this.colorPixel(x, y, color)
             }
+
         }
-        console.log("count50: " + count50, "count50-100: " + count100, "count200+: " + count200 )
     }
 
     calcDepth(x0, y0){
@@ -46,15 +61,24 @@ class Mandelbrot {
     }
 
     colorPixel(x, y, color){
-        if (color === 0) {
-            this.ctx.fillStyle = '#000'
-            this.ctx.fillRect(x, y, 1, 1)
-        } else {
-            this.ctx.fillStyle = `hsl(250, 100%, ${color}%)`
-            this.ctx.fillRect(x, y, 1 ,1)
-        }
-    }
+        // let hue = 0;
+        // let intensity = 55;
+        // if (color === 0){
+        //     intensity = 0;
+        // }
 
+        // switch (Math.floor(color) % 3) {
+        //     case 1:
+        //         hue = 125;
+        //         break;
+        //     case 2:
+        //         hue = 250;
+        //     default:
+        //         break;
+        // }
+        this.ctx.fillStyle = `hsl(0, 100%, ${color}%)`
+        this.ctx.fillRect(x, y, 1, 1)
+    }
 
 }
 

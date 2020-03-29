@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mandelbrot Test
     let configDiv = document.getElementById('tree-config');
     let mandel = new Mandelbrot(ctx);
-    mandel.iterateOverAll(-2, -0.8, 350);
-    let mandelcontrols = new MandelbrotControls();
+    let mandelcontrols = new MandelbrotControls(mandel);
 
 
     // canvasEl.addEventListener('click', (e) => console.log(e))
@@ -25,5 +24,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let toggle = document.getElementById('toggle')
     toggle.addEventListener('click', () => displayTreeParams())
-    
+     
 })
