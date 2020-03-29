@@ -19,7 +19,7 @@ body {
 #progress-bar {
     position: absolute;
     bottom: 0;
-    background-color: salmon;
+    /* background-color: salmon; */
 }
 #selection-rectangle {
     position: absolute;

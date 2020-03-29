@@ -30,19 +30,32 @@ class Mandelbrot {
     }
     
     iterateOverAll(){
+        let nextCanvas = document.createElement("canvas");
+        nextCanvas.width = innerWidth;
+        nextCanvas.height = innerHeight;
+        let nextContext = nextCanvas.getContext('2d');
         let di = this.imax - this.imin;
         let dj = this.jmax - this.jmin;
         let min_dim = Math.min(innerWidth, innerHeight);
         let step = Math.min(di, dj) / min_dim;
+        setTimeout(() => {
+            this.progressBar.show();
+        }, 10)
         for (let x = 0; x < innerWidth; x++) {
-            for (let y = 0; y < innerHeight; y++) {
-                let cx = this.imin + x * step;
-                let cy = this.jmin + (innerHeight - y) * step 
-                const color = this.calcDepth(cx, cy);
-                this.colorPixel(x, y, color)
-            }
-
+            setTimeout(() => {
+                this.progressBar.draw(x/innerWidth);
+                for (let y = 0; y < innerHeight; y++) {
+                    let cx = this.imin + x * step;
+                    let cy = this.jmin + (innerHeight - y) * step 
+                    const color = this.calcDepth(cx, cy);
+                    this.colorPixel(nextContext, x, y, color);
+                }
+            }, 10)
         }
+        setTimeout(() => {
+            this.ctx.drawImage(nextCanvas, 0, 0)
+            this.progressBar.hide();
+        }, 1000)
     }
 
     calcDepth(x0, y0){
@@ -60,7 +73,7 @@ class Mandelbrot {
         return 0;
     }
 
-    colorPixel(x, y, color){
+    colorPixel(ctx, x, y, color){
         // let hue = 0;
         // let intensity = 55;
         // if (color === 0){
@@ -76,8 +89,8 @@ class Mandelbrot {
         //     default:
         //         break;
         // }
-        this.ctx.fillStyle = `hsl(0, 100%, ${color}%)`
-        this.ctx.fillRect(x, y, 1, 1)
+        ctx.fillStyle = `hsl(0, 100%, ${color}%)`
+        ctx.fillRect(x, y, 1, 1)
     }
 
 }
