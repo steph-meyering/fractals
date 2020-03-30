@@ -29,6 +29,7 @@ class MandelbrotControls {
             let top = Math.min(this.y1, this.y2);
             let width = Math.abs(this.x2 - this.x1);
             let height = Math.abs(this.y2 - this.y1);
+            this.canvas.strokeStyle = this.validSelection() ? "white" : "#adadad"
             this.canvas.clearRect(0,0,innerWidth, innerHeight)
             this.canvas.strokeRect(left, top, width, height)
 
@@ -46,11 +47,12 @@ class MandelbrotControls {
     selectEnd(e) {
         this.x2 = e.offsetX;
         this.y2 = e.offsetY;
-        // this.animateRect();
-        this.mandel.update(this.x1, this.y1, this.x2, this.y2);
+        if(this.validSelection()){
+            this.mandel.update(this.x1, this.y1, this.x2, this.y2);
+        }
         this.selectionReset();
     }
-    
+    // clear the selection rectangle coordinates
     selectionReset(){
         this.active = false;
         this.canvas.clearRect(0, 0, innerWidth, innerHeight);
@@ -60,6 +62,12 @@ class MandelbrotControls {
         this.y2 = null;
     }
 
+    // enforce that selection area is at least 20x20px, and rules out accidental clicks
+    validSelection(){
+        let width = Math.abs(this.x2 - this.x1);
+        let height = Math.abs(this.y2 - this.y1);
+        return (width >= 20 && height >= 20) ? true : false;
+    }
     // animateRect(){
     //     console.log("animating rectangle")
     //     let left = Math.min(this.x1, this.x2);
@@ -97,14 +105,7 @@ class MandelbrotControls {
     //     drawGradient();
 
     // }
-    
-    getCurrentPos(e){
-        
-    }
 
-    convertCoordinates(x, y) {
-
-    }
 }
 
 export default MandelbrotControls;
