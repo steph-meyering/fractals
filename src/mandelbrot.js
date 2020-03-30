@@ -4,7 +4,7 @@ class Mandelbrot {
     constructor(ctx){
         this.ctx = ctx;
         this.progressBar = new ProgressBar;
-        this.depth = 1000;
+        this.depth = 350;
         this.imin = -2;
         this.imax = 0.5;
         this.jmin = -1;
@@ -36,8 +36,34 @@ class Mandelbrot {
         let nextContext = nextCanvas.getContext('2d');
         let di = this.imax - this.imin;
         let dj = this.jmax - this.jmin;
+        console.log(di, dj)
         let min_dim = Math.min(innerWidth, innerHeight);
         let step = Math.min(di, dj) / min_dim;
+
+        // run more iterations to get better resolution at deeper levels
+        switch (true) {
+            case (Math.min(di, dj) > 10**-2):
+                this.depth = 500
+                break;
+            case (Math.min(di, dj) > 10 ** -3):
+                this.depth = 1000;
+                break;
+            case (Math.min(di, dj) > 10 ** -4):
+                this.depth = 2000;
+                break;
+            case (Math.min(di, dj) > 10 ** -6):
+                this.depth = 5000;
+                break;
+            default:
+                break;
+            }
+            console.log(this.depth)
+
+        //
+        let count50 = 0;
+        let count80 = 0;
+        let countall = 0;
+        //
         setTimeout(() => {
             this.progressBar.show();
         }, 10)
@@ -49,13 +75,24 @@ class Mandelbrot {
                     let cy = this.jmin + (innerHeight - y) * step 
                     const color = this.calcDepth(cx, cy);
                     this.colorPixel(nextContext, x, y, color);
+                    countall++;
+                    if (color !== 0){
+                        if (color < 50){
+                            count50++
+                        } else if (color > 80){
+                            count80++
+                        }
+                    }
                 }
             }, 10)
         }
+
         setTimeout(() => {
             this.ctx.drawImage(nextCanvas, 0, 0)
             this.progressBar.hide();
-        }, 1000)
+            console.log("less than 50% ", count50 * 100 / countall);
+            console.log("more than 80% ", count80 * 100 / countall)
+        }, 20)
     }
 
     calcDepth(x0, y0){

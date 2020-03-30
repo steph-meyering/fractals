@@ -3,6 +3,7 @@ class BFSTree {
         this.branchAngle = branchAngle
         this.rootAngle = -90;
         this.ctx = ctx;
+        this.ctx.strokeStyle = "red"
         this.maxDepth = maxDepth;
         this.startPos = startPos;
         this.root = new Node(this.calcNodePos(startPos, this.rootAngle, 0), this.rootAngle);

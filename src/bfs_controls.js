@@ -12,6 +12,7 @@ class BFSInput{
         // set event listeners on sliders so the params display in real-time
         this.branchAngleSlider.addEventListener('input', () => this.update());
         this.depthSlider.addEventListener('input', () => this.update());
+        
     }
 
     displayUserInput(depth, angle) {

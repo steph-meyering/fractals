@@ -12,13 +12,13 @@
     display: block;
 }
 
-body {
+/* body {
     padding-top: 20px;
-}
+} */
 
 #progress-bar {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     /* background-color: salmon; */
 }
 #selection-rectangle {
@@ -26,7 +26,8 @@ body {
 }
 
 #toggle {
-    position: absolute;    
+    position: absolute;
+    right: 0px;
     background-color: rgb(179, 36, 0, 0.5);
     border: none;
     color: white;
@@ -36,4 +37,8 @@ body {
     /* display: inline-block; */
     font-size: 16px;
     z-index: 100;
+}
+
+#main-canvas {
+    background-color: black;
 }
