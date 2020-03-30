@@ -66,7 +66,8 @@ class Mandelbrot {
             }
             console.log(this.depth)
 
-
+        // timeout allows to dynamically render the canvas progress bar while
+        // computing next frame;
         setTimeout(() => {
             this.progressBar.show();
         }, 10)
@@ -82,12 +83,15 @@ class Mandelbrot {
             }, 10)
         }
 
+        // Display the set and hide progress bar when done computing
         setTimeout(() => {
             this.ctx.drawImage(nextCanvas, 0, 0)
             this.progressBar.hide();
         }, 20)
     }
 
+    // Convert the number of iterations it took to find a single pixel's color
+    // into a percentage of total iterations.
     calcDepth(x0, y0){
         let x = x0;
         let y = y0;
@@ -103,22 +107,9 @@ class Mandelbrot {
         return 0;
     }
 
+    // Draw pixel on canvas `ctx` at [`x`, `y`] coordinates
+    // `color` represents lightness percentage 
     colorPixel(ctx, x, y, color){
-        // let hue = 0;
-        // let intensity = 55;
-        // if (color === 0){
-        //     intensity = 0;
-        // }
-
-        // switch (Math.floor(color) % 3) {
-        //     case 1:
-        //         hue = 125;
-        //         break;
-        //     case 2:
-        //         hue = 250;
-        //     default:
-        //         break;
-        // }
         ctx.fillStyle = `hsl(0, 100%, ${color}%)`
         ctx.fillRect(x, y, 1, 1)
     }
