@@ -5,13 +5,14 @@ import BFSInput from "./bfs_controls";
 class AppControls {
     constructor(){
         this.show = "mandelbrot";
-
         const canvasEl = document.getElementById("main-canvas");
         canvasEl.height = window.innerHeight;
         canvasEl.width = window.innerWidth;
         this.ctx = canvasEl.getContext("2d"); 
         this.configDiv = document.getElementById('tree-config');
-
+        this.mandel = new Mandelbrot(this.ctx);
+        this.mandelcontrols = new MandelbrotControls(this.mandel);
+        
         const toggle = document.getElementById('toggle');
         
         toggle.addEventListener('click', () => {
@@ -35,19 +36,20 @@ class AppControls {
     display(){
         const selectRect = document.getElementById("selection-rectangle");
         const treeConfig = document.getElementById('tree-config');
+        this.ctx.clearRect(0, 0, innerWidth, innerHeight);
 
         switch (this.show) {
             case "mandelbrot":
-                let mandel = new Mandelbrot(this.ctx);
-                let mandelcontrols = new MandelbrotControls(mandel);
                 treeConfig.className = 'hidden';
                 selectRect.className = 'revealed';
+                this.mandel.iterateOverAll()
                 break;
             case "tree":
-                this.ctx.clearRect(0, 0, innerWidth, innerHeight);
                 treeConfig.className = 'revealed';
                 selectRect.className = 'hidden';
                 let input = new BFSInput(this.ctx, this.configDiv)
+                input.calculate()
+                break;
             default:
                 break;
         }

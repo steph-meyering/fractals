@@ -16,7 +16,7 @@ class BFSInput{
     }
 
     displayUserInput(depth, angle) {
-        this.output.innerHTML = `depth: ${depth} angle: ${angle} start position coordinates: ${this.startPos}`
+        this.output.innerHTML = `depth: ${depth} angle: ${angle}`
     }
 
     update(){
@@ -28,7 +28,7 @@ class BFSInput{
         
     }
 
-    calculate (depth, angle) {
+    calculate (depth = 9, angle = 20) {
         this.ctx.clearRect(0 ,0 , innerWidth, innerHeight)
         new BFSTree(this.ctx, this.startPos, depth, angle)
     }

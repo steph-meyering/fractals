@@ -4,13 +4,20 @@ class Mandelbrot {
     constructor(ctx){
         this.ctx = ctx;
         this.progressBar = new ProgressBar;
+        this.init();
+    }
+
+    init(){
         this.depth = 350;
         this.imin = -2;
         this.imax = 0.5;
         this.jmin = -1;
         this.jmax = 1;
-        this.iterateOverAll();
+    }
 
+    reset() {
+        this.init();
+        this.iterateOverAll();
     }
 
     update(x0, y0, x1, y1){
@@ -129,6 +136,8 @@ class Mandelbrot {
         ctx.fillStyle = `hsl(0, 100%, ${color}%)`
         ctx.fillRect(x, y, 1, 1)
     }
+
+
 
 }
 
