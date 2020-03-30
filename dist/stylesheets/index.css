@@ -31,9 +31,8 @@
     position: absolute;
 }
 
-#toggle {
+button {
     position: absolute;
-    right: 0px;
     background-color: rgb(179, 36, 0, 0.5);
     border: none;
     color: white;
@@ -44,6 +43,16 @@
     z-index: 100;
 }
 
+#toggle {
+    right: 0px;
+}
+
 #main-canvas {
     background-color: black;
 }
+
+/* input {
+    background:white;
+    box-shadow: 1px 1px 1px white, 0px 0px 1px white;
+    color: royalblue;
+} */

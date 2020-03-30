@@ -12,6 +12,9 @@ class MandelbrotControls {
         this.selectRect.addEventListener('mousemove', (e) => this.selectMove(e));
         this.selectRect.addEventListener('mouseup', (e) => this.selectEnd(e));
         this.selectionReset();
+
+        const resetButton = document.getElementById("reset");
+        resetButton.addEventListener('click',() => this.mandel.reset())
     }
 
     selectStart(e) {

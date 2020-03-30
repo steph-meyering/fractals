@@ -34,6 +34,7 @@ class AppControls {
     
     display(){
         const selectRect = document.getElementById("selection-rectangle");
+        const resetButton = document.getElementById("reset");
         const treeConfig = document.getElementById('tree-config');
         this.ctx.clearRect(0, 0, innerWidth, innerHeight);
 
@@ -41,11 +42,13 @@ class AppControls {
             case "mandelbrot":
                 treeConfig.className = 'hidden';
                 selectRect.className = 'revealed';
+                resetButton.className = 'revealed';
                 this.mandel.iterateOverAll();
                 break;
             case "tree":
                 treeConfig.className = 'revealed';
                 selectRect.className = 'hidden';
+                resetButton.className = 'hidden';
                 let input = new TreeControls(this.ctx, this.configDiv)
                 input.calculate();
                 break;
