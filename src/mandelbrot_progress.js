@@ -8,7 +8,6 @@ class ProgressBar{
     }
 
     draw(percentage){
-        console.log(percentage)
         this.ctx.fillStyle = "red";
         this.ctx.fillRect(0,0, percentage * innerWidth, 30);
     }
