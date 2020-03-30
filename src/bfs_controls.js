@@ -1,6 +1,6 @@
 import BFSTree from "./bfs_tree";
 
-class BFSInput{
+class TreeControls{
     constructor(ctx, configDiv){
         // save context and get input slider elements + output div
         this.ctx = ctx;
@@ -34,4 +34,4 @@ class BFSInput{
     }
 }
 
-export default BFSInput;
+export default TreeControls;

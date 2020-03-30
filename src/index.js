@@ -1,6 +1,6 @@
 import RecTree from "./rec_tree";
 import BFSTree from "./bfs_tree";
-import BFSInput from "./bfs_controls";
+import TreeControls from "./bfs_controls";
 import AppControls, { displayTreeParams } from "./display";
 import Mandelbrot from "./mandelbrot";
 import MandelbrotControls from "./mandelbrot_controls";
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     let appControls = new AppControls
-    // let input = new BFSInput(ctx, configDiv)
+    // let input = new TreeControls(ctx, configDiv)
 
 
 })

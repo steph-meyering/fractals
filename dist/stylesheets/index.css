@@ -1,5 +1,4 @@
 #tree-config {
-    display: flex;
     flex-direction: column;
     font-size: 20px;
     position: absolute;
@@ -19,7 +18,7 @@
 }
 
 .revealed {
-    display: block;
+    display: flex;
 }
 
 /* body {

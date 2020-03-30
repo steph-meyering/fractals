@@ -1,6 +1,6 @@
 import Mandelbrot from "./mandelbrot";
 import MandelbrotControls from "./mandelbrot_controls";
-import BFSInput from "./bfs_controls";
+import TreeControls from "./bfs_controls";
 
 class AppControls {
     constructor(){
@@ -12,7 +12,6 @@ class AppControls {
         this.configDiv = document.getElementById('tree-config');
         this.mandel = new Mandelbrot(this.ctx);
         this.mandelcontrols = new MandelbrotControls(this.mandel);
-        
         const toggle = document.getElementById('toggle');
         
         toggle.addEventListener('click', () => {
@@ -42,13 +41,13 @@ class AppControls {
             case "mandelbrot":
                 treeConfig.className = 'hidden';
                 selectRect.className = 'revealed';
-                this.mandel.iterateOverAll()
+                this.mandel.iterateOverAll();
                 break;
             case "tree":
                 treeConfig.className = 'revealed';
                 selectRect.className = 'hidden';
-                let input = new BFSInput(this.ctx, this.configDiv)
-                input.calculate()
+                let input = new TreeControls(this.ctx, this.configDiv)
+                input.calculate();
                 break;
             default:
                 break;

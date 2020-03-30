@@ -66,11 +66,7 @@ class Mandelbrot {
             }
             console.log(this.depth)
 
-        //
-        let count50 = 0;
-        let count80 = 0;
-        let countall = 0;
-        //
+
         setTimeout(() => {
             this.progressBar.show();
         }, 10)
@@ -82,14 +78,6 @@ class Mandelbrot {
                     let cy = this.jmin + (innerHeight - y) * step 
                     const color = this.calcDepth(cx, cy);
                     this.colorPixel(nextContext, x, y, color);
-                    countall++;
-                    if (color !== 0){
-                        if (color < 50){
-                            count50++
-                        } else if (color > 80){
-                            count80++
-                        }
-                    }
                 }
             }, 10)
         }
@@ -97,8 +85,6 @@ class Mandelbrot {
         setTimeout(() => {
             this.ctx.drawImage(nextCanvas, 0, 0)
             this.progressBar.hide();
-            console.log("less than 50% ", count50 * 100 / countall);
-            console.log("more than 80% ", count80 * 100 / countall)
         }, 20)
     }
 
