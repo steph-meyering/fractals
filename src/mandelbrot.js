@@ -37,13 +37,13 @@ class Mandelbrot {
     }
     
     iterateOverAll(){
+        console.time('iterate')
         let nextCanvas = document.createElement("canvas");
         nextCanvas.width = innerWidth;
         nextCanvas.height = innerHeight;
         let nextContext = nextCanvas.getContext('2d');
         let di = this.imax - this.imin;
         let dj = this.jmax - this.jmin;
-        console.log(di, dj)
         let min_dim = Math.min(innerWidth, innerHeight);
         let step = Math.min(di, dj) / min_dim;
 
@@ -64,13 +64,12 @@ class Mandelbrot {
             default:
                 break;
             }
-            console.log(this.depth)
 
         // timeout allows to dynamically render the canvas progress bar while
         // computing next frame;
         setTimeout(() => {
             this.progressBar.show();
-        }, 10)
+        }, 0)
         for (let x = 0; x < innerWidth; x++) {
             setTimeout(() => {
                 this.progressBar.draw(x/innerWidth);
@@ -80,14 +79,15 @@ class Mandelbrot {
                     const color = this.calcDepth(cx, cy);
                     this.colorPixel(nextContext, x, y, color);
                 }
-            }, 10)
+            }, 0)
         }
 
         // Display the set and hide progress bar when done computing
         setTimeout(() => {
             this.ctx.drawImage(nextCanvas, 0, 0)
             this.progressBar.hide();
-        }, 20)
+            console.timeEnd('iterate')
+        }, 0)
     }
 
     // Convert the number of iterations it took to find a single pixel's color
@@ -110,8 +110,8 @@ class Mandelbrot {
     // Draw pixel on canvas `ctx` at [`x`, `y`] coordinates
     // `color` represents lightness percentage 
     colorPixel(ctx, x, y, color){
-        ctx.fillStyle = `hsl(0, 100%, ${color}%)`
-        ctx.fillRect(x, y, 1, 1)
+        ctx.fillStyle = `hsl(0, 100%, ${color}%)`;
+        ctx.fillRect(x, y, 1, 1);
     }
 
 

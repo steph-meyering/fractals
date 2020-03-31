@@ -47,6 +47,36 @@ button {
     right: 0px;
 }
 
+#info {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 50%;
+    padding: 15px 22px;
+
+}
+
+#instructions {
+    color: white;
+    position: absolute;
+    top: 3%;
+    left: 45%;
+    opacity: 1;
+    animation: fadeOut 2s;
+    animation-delay: 1s;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        display: block;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 #main-canvas {
     background-color: black;
 }

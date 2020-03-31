@@ -13,6 +13,10 @@ class AppControls {
         this.mandel = new Mandelbrot(this.ctx);
         this.mandelcontrols = new MandelbrotControls(this.mandel);
         const toggle = document.getElementById('toggle');
+        const infoButton = document.getElementById("info");
+        const instructions = document.getElementById("instructions")
+        infoButton.addEventListener('click',
+            () => instructions.className = "hidden")
         
         toggle.addEventListener('click', () => {
             switch (this.show) {
@@ -55,6 +59,10 @@ class AppControls {
             default:
                 break;
         }
+    }
+
+    info(){
+
     }
 }
 
