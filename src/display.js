@@ -5,6 +5,7 @@ import TreeControls from "./bfs_controls";
 class AppControls {
     constructor(){
         this.show = "mandelbrot";
+        this.displayingInfo = false;
         const canvasEl = document.getElementById("main-canvas");
         canvasEl.height = window.innerHeight;
         canvasEl.width = window.innerWidth;
@@ -13,10 +14,11 @@ class AppControls {
         this.mandel = new Mandelbrot(this.ctx);
         this.mandelcontrols = new MandelbrotControls(this.mandel);
         const toggle = document.getElementById('toggle');
-        const infoButton = document.getElementById("info");
-        const instructions = document.getElementById("instructions")
-        infoButton.addEventListener('click',
-            () => instructions.className = "hidden")
+        const infoButton = document.getElementById("info-button");
+        infoButton.addEventListener('click', () => this.toggleInstructions())
+        const closeInstructionsButton = document.getElementById("hide-instructions");
+        closeInstructionsButton.addEventListener('click', () => this.toggleInstructions())
+
         
         toggle.addEventListener('click', () => {
             switch (this.show) {
@@ -34,6 +36,17 @@ class AppControls {
             this.display();
         })
         this.display()
+    }
+
+    toggleInstructions(){
+        const instructions = document.getElementById("instructions")
+        if (this.displayingInfo){
+            this.displayingInfo = false;
+            instructions.className = 'hidden';    
+        } else {
+            this.displayingInfo = true;
+            instructions.className = 'instructions';
+        }
     }
     
     display(){
@@ -56,6 +69,8 @@ class AppControls {
                 let input = new TreeControls(this.ctx, this.configDiv)
                 input.calculate();
                 break;
+            case "info":
+                
             default:
                 break;
         }
@@ -67,26 +82,3 @@ class AppControls {
 }
 
 export default AppControls;
-
-// export const displayTreeParams = () => {
-//     const treeConfig = document.getElementById('tree-config');
-//     const canvasEl = document.getElementById("main-canvas");
-//     const selectRect = document.getElementById("selection-rectangle")
-//     const ctx = canvasEl.getContext("2d");
-//     const toggle = document.getElementById("toggle");
-//     switch (treeConfig.className) {
-//         case "revealed":
-//             ctx.clearRect(0, 0, innerWidth, innerHeight);
-//             treeConfig.className = 'hidden';
-//             selectRect.className = 'revealed';
-//             toggle.innerHTML = "Switch to Tree"
-//             break
-//         case "hidden":
-//             treeConfig.className = 'revealed';
-//             selectRect.className = 'hidden';
-//             toggle.innerHTML = "Switch to Mandelbrot";
-//             break;
-//         default:
-//             console.log(treeConfig.className);
-//     }
-// }

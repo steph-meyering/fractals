@@ -10,13 +10,28 @@
 </head>
 <body>
     <div>
-        <ul id="instructions">
-            <li> Click + Drag to zoom </li>
-            <li> The edges of the set have the most interesting patterns </li>
-        </ul>
+        <div id="instructions" class="hidden" >
+            <p>
+                Click + Drag to zoom into selected area.<br>
+                The edges of the set have the most interesting patterns.
+            </p>
+            <br>
+            <p> About Fractals: <br>
+                Fractals are visual expressions of a repeating pattern or 
+                formula that gets progressively more complex. 
+            </p>
+            <p>
+                In this project, the Mandelbrot Set is obtained by iterating 
+                over every pixel of the window and performing calculations
+                on it's coordinates.
+                Each pixel's color is computed by performing the same operation hundreds or thousands of times.
+                At higher magnification levels, fractal shapes show more intricate details
+            </p>
+            <button id="hide-instructions">Close</button>
+        </div>
         
         <button id="reset">Reset</button>
-        <button id="info">?</button>
+        <button id="info-button">?</button>
         <button id="toggle">Switch to Tree</button>
         <div id="tree-config" class="">
             <input type="range" min="1" max="15" value="9" id="depth-input"></input>

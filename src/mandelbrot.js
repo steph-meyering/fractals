@@ -59,6 +59,9 @@ class Mandelbrot {
                 this.depth = 2000;
                 break;
             case (Math.min(di, dj) > 10 ** -6):
+                this.depth = 3500;
+                break;
+            case (Math.min(di, dj) > 10 ** -7):
                 this.depth = 5000;
                 break;
             default:

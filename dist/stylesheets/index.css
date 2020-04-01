@@ -47,7 +47,7 @@ button {
     right: 0px;
 }
 
-#info {
+#info-button {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -56,15 +56,28 @@ button {
 
 }
 
-#instructions {
+.instructions {
     color: white;
     position: absolute;
-    top: 3%;
-    left: 45%;
+    top: 30%;
+    left: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(179, 36, 0, 0.5);
+    width: 33%;
     opacity: 1;
-    animation: fadeOut 2s;
-    animation-delay: 1s;
+    -webkit-transition: opacity 3s;
+    -moz-transition: opacity 3s;   
+    transition: opacity 3s; 
 }
+
+#hide-instructions {
+    position: relative;
+    
+
+}
+
 
 @keyframes fadeOut {
     from {
