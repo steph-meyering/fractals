@@ -37,7 +37,7 @@ class Mandelbrot {
     }
     
     iterateOverAll(){
-        console.time('iterate')
+        // console.time('iterate')
         let nextCanvas = document.createElement("canvas");
         nextCanvas.width = innerWidth;
         nextCanvas.height = innerHeight;
@@ -67,7 +67,7 @@ class Mandelbrot {
             default:
                 break;
             }
-        console.log(this.depth)
+        
         // timeout allows to dynamically render the canvas progress bar while
         // computing next frame;
         setTimeout(() => {
@@ -89,7 +89,7 @@ class Mandelbrot {
         setTimeout(() => {
             this.ctx.drawImage(nextCanvas, 0, 0)
             this.progressBar.hide();
-            console.timeEnd('iterate')
+            // console.timeEnd('iterate')
         }, 0)
     }
 
