@@ -33,6 +33,7 @@ class AppControls {
                 default:
                     break;
             }
+            if (this.displayingInfo) this.toggleInstructions();
             this.display();
         })
         this.display()
@@ -40,7 +41,10 @@ class AppControls {
 
     toggleInstructions(){
         const instructions = document.getElementById("instructions")
+        const mandelInstructions = document.getElementById("mandelbrot-instructions");
+        const treeInstructions = document.getElementById("tree-instructions")
         const selectRect = document.getElementById("selection-rectangle");
+        
         if (this.displayingInfo){
             this.displayingInfo = false;
             instructions.className = 'hidden';
@@ -51,6 +55,13 @@ class AppControls {
             this.displayingInfo = true;
             instructions.className = 'instructions';
             selectRect.className = 'hidden';
+            if (this.show === "mandelbrot"){
+                mandelInstructions.className = "";
+                treeInstructions.className = "hidden";
+            } else {
+                mandelInstructions.className = "hidden";
+                treeInstructions.className = "";
+            }
         }
     }
     
@@ -79,9 +90,6 @@ class AppControls {
         }
     }
 
-    info(){
-
-    }
 }
 
 export default AppControls;
