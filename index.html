@@ -39,7 +39,14 @@
                 </p>
             </div>
             <div id="tree-instructions" class="">
-                <p>TREE INSTRUCTIONS</p>
+                <p>Trees are an example of fractals occurring in nature.
+                    <br>
+                    <br>
+                    This binary tree is made up of nodes, each of which has two nested children following a BFS pattern.
+                    Every parent node is attached to it's two children by a branch (drawn with Canvas).
+                    Use the depth slider to change the amount of nodes generated, and the angle slider
+                    to morph the tree into different positions.
+                </p>
             </div>
             <button id="hide-instructions">Close</button>
         </div>
@@ -48,7 +55,7 @@
         <button id="info-button">?</button>
         <button id="toggle">Switch to Tree</button>
         <div id="tree-config" class="">
-            <input type="range" min="1" max="15" value="9" id="depth-input"></input>
+            <input type="range" min="1" max="12" value="9" id="depth-input"></input>
             <p id='tree-params'>depth: 15 angle: 20</p>
             <input type="range" min="1" max="200" value="20" id="branch-angle-input">
         </div>

@@ -62,12 +62,12 @@ class Mandelbrot {
                 this.depth = 3500;
                 break;
             case (Math.min(di, dj) > 10 ** -7):
-                this.depth = 5000;
+                this.depth = 4500;
                 break;
             default:
                 break;
             }
-
+        console.log(this.depth)
         // timeout allows to dynamically render the canvas progress bar while
         // computing next frame;
         setTimeout(() => {

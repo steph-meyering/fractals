@@ -16,7 +16,7 @@ class TreeControls{
     }
 
     displayUserInput(depth, angle) {
-        this.output.innerHTML = `depth: ${depth} angle: ${angle}`
+        this.output.innerHTML = `depth: ${depth} angle: ${angle} nodes: ${2**depth}`
     }
 
     update(){
