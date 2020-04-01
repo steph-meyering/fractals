@@ -23,11 +23,11 @@ class AppControls {
         toggle.addEventListener('click', () => {
             switch (this.show) {
                 case "mandelbrot":
-                    toggle.innerHTML = `switch to mandelbrot`;
+                    toggle.innerHTML = `Switch to mandelbrot`;
                     this.show = "tree";
                     break;
                 case "tree":
-                    toggle.innerHTML = `switch to tree`
+                    toggle.innerHTML = `Switch to tree`
                     this.show = "mandelbrot";
                     break;
                 default:
@@ -44,7 +44,9 @@ class AppControls {
         if (this.displayingInfo){
             this.displayingInfo = false;
             instructions.className = 'hidden';
-            selectRect.className = 'revealed';
+            if (this.show === "mandelbrot"){
+                selectRect.className = 'revealed';
+            }
         } else {
             this.displayingInfo = true;
             instructions.className = 'instructions';
