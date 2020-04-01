@@ -40,12 +40,15 @@ class AppControls {
 
     toggleInstructions(){
         const instructions = document.getElementById("instructions")
+        const selectRect = document.getElementById("selection-rectangle");
         if (this.displayingInfo){
             this.displayingInfo = false;
-            instructions.className = 'hidden';    
+            instructions.className = 'hidden';
+            selectRect.className = 'revealed';
         } else {
             this.displayingInfo = true;
             instructions.className = 'instructions';
+            selectRect.className = 'hidden';
         }
     }
     
@@ -69,8 +72,6 @@ class AppControls {
                 let input = new TreeControls(this.ctx, this.configDiv)
                 input.calculate();
                 break;
-            case "info":
-                
             default:
                 break;
         }
