@@ -36,7 +36,8 @@ class AppControls {
             if (this.displayingInfo) this.toggleInstructions();
             this.display();
         })
-        this.display()
+        this.display();
+        this.toggleInstructions();
     }
 
     toggleInstructions(){
