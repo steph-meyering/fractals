@@ -107,7 +107,7 @@ class Mandelbrot {
         return (i / this.depth) * 100;
       }
     }
-    // if after the specified number of iterations, the complex coordinates are 
+    // if after the specified number of iterations the complex coordinates are 
     // still within range, the pixel is part of the set and colored black.
     return 0;
   }

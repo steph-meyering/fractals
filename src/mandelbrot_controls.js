@@ -30,6 +30,15 @@ class MandelbrotControls {
     }
   }
 
+  selectEnd(e) {
+    this.x2 = e.offsetX;
+    this.y2 = e.offsetY;
+    if (this.validSelection()) {
+      this.mandelbrot.update(this.x1, this.y1, this.x2, this.y2);
+    }
+    this.selectionReset();
+  }
+
   selectRender() {
     if (this.active) {
       let left = Math.min(this.x1, this.x2);
@@ -43,15 +52,6 @@ class MandelbrotControls {
     }
   }
 
-  selectEnd(e) {
-    this.x2 = e.offsetX;
-    this.y2 = e.offsetY;
-    if (this.validSelection()) {
-      this.mandelbrot.update(this.x1, this.y1, this.x2, this.y2);
-    }
-    this.selectionReset();
-  }
-
   // clear the selection rectangle coordinates
   selectionReset() {
     this.active = false;
@@ -62,7 +62,7 @@ class MandelbrotControls {
     this.y2 = null;
   }
 
-  // enforce that selection area is at least 20x20px, prevents zooming-in on an 
+  // enforce that selection area is at least 20x20px, prevents zooming-in on an
   // accidental click
   validSelection() {
     let width = Math.abs(this.x2 - this.x1);
