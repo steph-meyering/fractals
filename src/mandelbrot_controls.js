@@ -1,6 +1,6 @@
 class MandelbrotControls {
   constructor(mandelbrot) {
-    this.mandel = mandelbrot;
+    this.mandelbrot = mandelbrot;
     const selectRect = document.getElementById("selection-box");
     selectRect.height = window.innerHeight;
     selectRect.width = window.innerWidth;
@@ -12,7 +12,7 @@ class MandelbrotControls {
     this.selectRect.addEventListener("mousedown", (e) => this.selectStart(e));
     this.selectRect.addEventListener("mousemove", (e) => this.selectMove(e));
     this.selectRect.addEventListener("mouseup", (e) => this.selectEnd(e));
-    resetButton.addEventListener("click", () => this.mandel.reset());
+    resetButton.addEventListener("click", () => this.mandelbrot.reset());
     this.selectionReset();
   }
 
@@ -47,7 +47,7 @@ class MandelbrotControls {
     this.x2 = e.offsetX;
     this.y2 = e.offsetY;
     if (this.validSelection()) {
-      this.mandel.update(this.x1, this.y1, this.x2, this.y2);
+      this.mandelbrot.update(this.x1, this.y1, this.x2, this.y2);
     }
     this.selectionReset();
   }

@@ -8,7 +8,7 @@ class Mandelbrot {
   }
 
   init() {
-    this.depth = 350;
+    this.depth = 100;
     this.imin = -2;
     this.imax = 0.5;
     this.jmin = -1;
@@ -36,6 +36,7 @@ class Mandelbrot {
   }
 
   iterateOverAll() {
+    // iterates over every single pixel in window
     let nextCanvas = document.createElement("canvas");
     nextCanvas.width = innerWidth;
     nextCanvas.height = innerHeight;
@@ -48,7 +49,7 @@ class Mandelbrot {
     // run more iterations to get better resolution at deeper levels
     switch (true) {
       case Math.min(di, dj) > 10 ** -2:
-        this.depth = 500;
+        this.depth = 300;
         break;
       case Math.min(di, dj) > 10 ** -3:
         this.depth = 1000;
@@ -66,7 +67,7 @@ class Mandelbrot {
         break;
     }
 
-    // timeout allows to dynamically render the canvas progress bar while
+    // timeout allows to asynchronously render the canvas progress bar while
     // computing next frame;
     setTimeout(() => {
       this.progressBar.show();
@@ -101,14 +102,18 @@ class Mandelbrot {
       x = x1;
       y = y1;
       if (x * y > 4) {
+        // pixel is not part of the set and we return the number of iterations
+        // it took to find out, as a percentage.
         return (i / this.depth) * 100;
       }
     }
+    // if after the specified number of iterations, the complex coordinates are 
+    // still within range, the pixel is part of the set and colored black.
     return 0;
   }
 
   // Draw pixel on canvas `ctx` at [`x`, `y`] coordinates
-  // `color` represents lightness percentage
+  // `color` variable actually represents lightness percentage
   colorPixel(ctx, x, y, color) {
     ctx.fillStyle = `hsl(0, 100%, ${color}%)`;
     ctx.fillRect(x, y, 1, 1);
