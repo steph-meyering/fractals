@@ -1,25 +1,26 @@
 * {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
 }
 
 #tree-config {
-    flex-direction: column;
-    font-size: 16px;
-    position: absolute;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    width: 300px;
-    background-color: rgb(179, 36, 0, 0.5);
+  flex-direction: column;
+  font-size: 16px;
+  position: absolute;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  width: 300px;
+  background-color: rgb(179, 36, 0, 0.5);
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .revealed {
-    display: flex;
+  display: flex;
 }
 
 /* body {
@@ -27,85 +28,81 @@
 } */
 
 #progress-bar {
-    position: absolute;
-    bottom: 10px;
-    /* background-color: salmon; */
+  position: absolute;
+  bottom: 10px;
+  /* background-color: salmon; */
 }
-#selection-rectangle {
-    position: absolute;
+#selection-box {
+  position: absolute;
 }
 
 button {
-    position: absolute;
-    background-color: rgb(179, 36, 0, 0.5);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    z-index: 100;
+  position: absolute;
+  background-color: rgb(179, 36, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  z-index: 100;
 }
 
 #toggle {
-    right: 0px;
+  right: 0px;
 }
 
 #info-button {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    border-radius: 50%;
-    padding: 15px 22px;
-
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  border-radius: 50%;
+  padding: 15px 22px;
 }
 
 .instructions {
-    color: white;
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    background-color: rgb(179, 36, 0, 0.5);
-    width: 33%;
-    opacity: 1;
-    -webkit-transition: opacity 3s;
-    -moz-transition: opacity 3s;   
-    transition: opacity 3s; 
+  color: white;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: rgb(179, 36, 0, 0.5);
+  width: 33%;
+  opacity: 1;
+  -webkit-transition: opacity 3s;
+  -moz-transition: opacity 3s;
+  transition: opacity 3s;
 }
 
 .bold {
-    font-weight: bold;
-    font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .underline {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 #hide-instructions {
-    margin-top: 20px;
-    position: relative;
-    
-
+  margin-top: 20px;
+  position: relative;
 }
 
-
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-        display: block;
-    }
+  from {
+    opacity: 1;
+    display: block;
+  }
 
-    to {
-        opacity: 0;
-    }
+  to {
+    opacity: 0;
+  }
 }
 
 #main-canvas {
-    background-color: black;
+  background-color: black;
 }
 
 /* input {
