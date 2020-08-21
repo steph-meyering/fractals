@@ -1,6 +1,8 @@
-![fractals title screenshot](./images/bpc.png)
+[![fractals title screenshot](./images/bpc.png)](https://steph-meyering.github.io/fractals/)
 
 _A Vanilla JavaScript Fractal Visualizer_
+
+[**LIVE SITE**](https://steph-meyering.github.io/fractals/)
 
 ## **Description**
 
